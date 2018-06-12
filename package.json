@@ -10,10 +10,12 @@
     "dev": "webpack-dev-server --open --host 0.0.0.0 --config webpack.pro.js --content-base ./src/"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "thunk": "^0.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

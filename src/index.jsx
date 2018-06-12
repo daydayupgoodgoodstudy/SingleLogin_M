@@ -1,38 +1,18 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configSotre from "./redux/configStore";
 
-import { createStore } from 'redux';
+
+import App from "./content/App.jsx"
+const store = configSotre();
 
 
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT': return state + 1;
-    case 'DECREMENT': return state - 1;
-    default: return state;
-  }
-};
 
-const Counter = ({ value, onIncrement, onDecrement }) => (
-  <div>
-    <h1>{value}</h1>
-    <button onClick={onIncrement}>+</button>
-    <button onClick={onDecrement}>-</button>
-  </div>
-);
-
-let store = createStore(reducer);
-
-const render = () => {
   ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-    />,
+    <Provider store={store}>
+          <App />
+    </Provider>,
     document.getElementById('wrapper')
   );
-}
-
-render();
-store.subscribe(render);
