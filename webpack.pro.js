@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-  mode:"development",
+  mode: "development",
   entry: './src/index.jsx',
   output: {
     filename: 'bundle.js',
@@ -19,14 +19,17 @@ module.exports = {
       },
     ]
   },
-  plugins:[
+  plugins: [
     new HtmlWebpackPlugin({
-        template: './src/index.html', //模板路径
-        // hash: true,
-        minify: {
-            removeAttributeQuotes: true // 移除属性的引号
-        },
-        inject: true
+      template: './src/index.html', //模板路径
+      // hash: true,
+      minify: {
+        removeAttributeQuotes: true // 移除属性的引号
+      },
+      inject: true
+    }),
+    new webpack.ProvidePlugin({
+      'axios': 'axios'
     }),
   ]
 
