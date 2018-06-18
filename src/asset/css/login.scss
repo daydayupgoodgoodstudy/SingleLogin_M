@@ -1,0 +1,133 @@
+.Login{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-width: 1480px;
+    background: #3B91FD;
+}
+
+.Login .zhezhao{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+}
+
+.Login .Login_top_nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 80px;
+    height: 80px;
+    background: #fff;
+}
+.Login .Login_top_nav_box{
+    width: 1480px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.Login .Login_top_nav span{
+  padding-left:20px;
+  color: #3B91FD;
+  font-size: 16px;
+  line-height: 22px;
+  
+}
+
+.Login .Login_content_model{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Login .Login_content{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 136px;
+  margin-bottom: 74px;
+  width: 1480px;
+  height: 790px;
+  background: #fff;
+  border-radius: 15px;
+  position: relative;
+}
+
+.Login  .Login_content_img{
+    width: 650px;
+    height: 370px;
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
+
+}
+
+.Login_content_img img{
+  width: 100%;
+  height: auto;
+}
+
+.Login .img_box{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+.img_box img{
+  width: 100%;
+  height: auto;
+}
+
+
+.Login .ant-input{
+  font-size: 20px;
+}
+
+.Login .ant-btn-primary{
+  font-size: 18px;
+  width: 100%;
+  height: 70px;
+  border-radius: 4px;
+}
+
+
+
+.Login .ant-input-group-addon{
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+
+.Login .Login_content_input{
+    width: 525px;
+    position: absolute;
+    top: 50%;
+    right: 100px;;
+    transform: translateY(-50%);
+    
+}
+
+.Login .Login_content_input input{
+  height: 70px;
+}
+
+
+input{
+  -moz-appearance:none !important; /* Firefox */
+  -webkit-appearance:none !important; /* Safari 和 Chrome */
+  outline:none;
+  background-color:transparent!important;
+}
+
+input:-webkit-autofill,input:focus:-webkit-autofill { 
+  -webkit-box-shadow: 0 0 0px 1000px white inset; 
+  outline:none;
+  }
