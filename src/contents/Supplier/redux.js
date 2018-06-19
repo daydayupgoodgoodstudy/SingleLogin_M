@@ -4,11 +4,11 @@ const def = {
 }
 export default function reducers(state = def, action) {
   switch (action.type) {
-    case 'Table_Loading_false':
+    case 'Supplier/Table_Loading_false':
       return { ...state, Table_Loading: false }
-    case 'Table_Loading_true':
+    case 'Supplier/Table_Loading_true':
       return { ...state, Table_Loading: true }
-    case 'Table_data':
+    case 'Supplier/Table_data':
       return { ...state, Table_data: action.data }
     default:
       return state;

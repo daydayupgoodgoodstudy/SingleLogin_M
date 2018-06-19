@@ -134,6 +134,7 @@ class Main extends React.Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state,'---')
     return {
         Loading: state.Supplier.Table_Loading,
         Data: state.Supplier.Table_data

@@ -7,7 +7,7 @@ import config from "@/config.json";
 //登录
 export const login = (data) => {
     return (dispatch) => {
-        dispatch({ type: "login_loading_true" })
+        dispatch({ type: "Login/login_loading_true" })
         axios({
             method: "post",
             url: `/api/sms/user/login`,
@@ -27,10 +27,10 @@ export const login = (data) => {
                 } else {
                     message.error(data.message)
                 }
-                dispatch({ type: "login_loading_false" })
+                dispatch({ type: "Login/login_loading_false" })
             })
             .catch(err => {
-                dispatch({ type: "login_loading_false" })
+                dispatch({ type: "Login/login_loading_false" })
                 message.error(err.message || "登录失败");
             })
     }
@@ -39,7 +39,7 @@ export const login = (data) => {
 //修改密码
 export const change_pwd = (body, history) => {
     return (dispatch) => {
-        dispatch({ type: "login_loading_true" })
+        dispatch({ type: "Login/login_loading_true" })
         axios({
             method: "post",
             url: `/api/shuzhi/modifyPassword.html`,
@@ -55,10 +55,10 @@ export const change_pwd = (body, history) => {
                 } else {
                     message.error(data.message)
                 }
-                dispatch({ type: "login_loading_false" })
+                dispatch({ type: "Login/login_loading_false" })
             })
             .catch(err => {
-                dispatch({ type: "login_loading_false" })
+                dispatch({ type: "Login/login_loading_false" })
                 message.error("修改失败");
             })
     }
