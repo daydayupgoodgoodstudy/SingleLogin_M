@@ -16,6 +16,8 @@ export const Log_out = () => {
                 message.success("已退出登录");
             })
             .catch(err => {
+                Cookie.remove('token')
+                history.push('/login')
                 message.error("已退出登录");
             })
     }

@@ -102,7 +102,7 @@ class Main extends React.Component {
             <React.Fragment>
                 <div className="open_content">
                     <Title style={{ fontSize: "24px" }} title={`短信模板管理`} />
-                    <Button className="open_btn" onClick={() => this.props.history.push("/home/temp/create")} type="primary">添加模板</Button>
+                    <Button className="open_btn" onClick={() => this.props.history.push("/home/temp/create")} type="primary">添加</Button>
                 </div>
                 <Divider />
                 <Table

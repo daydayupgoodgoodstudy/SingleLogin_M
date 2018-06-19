@@ -2,7 +2,7 @@ import { Form, Row, Col, Select, Popconfirm, Modal, Input, Button, Table, Icon, 
 import { connect } from 'react-redux';
 
 import { Title } from "@/components/content-header";
-import { supplier_tabledata,supplier_delete } from "./action";
+import { supplier_tabledata,supplier_delete,supplier_sort } from "./action";
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -11,10 +11,15 @@ class Main extends React.Component {
         super(props);
         this.confirm = this.confirm.bind(this);
         this.message_edit = this.message_edit.bind(this);
+        this.message_sort = this.message_sort.bind(this);
     }
     confirm = (id) => {
         const { dispatch} = this.props;
         dispatch(supplier_delete(id))
+    }
+    message_sort(id) {
+        const { dispatch, history } = this.props;
+        dispatch(supplier_sort(id));
     }
     message_edit(row) {
         const { dispatch, history } = this.props;
@@ -100,8 +105,9 @@ class Main extends React.Component {
                 width: "16%",
                 render: (text, record, index) => {
                     return <div>
-                        <Button onClick={() => this.message_edit(record)} type="primary">编辑</Button>
-                        <Popconfirm placement="topRight" title={`是否确认删除`} onConfirm={() => this.confirm(record.id)} okText="Yes" cancelText="No">
+                        <Button onClick={() => this.message_sort(record.id)} type="primary">置顶</Button>
+                        <Button  style={{ marginLeft: 8 }} onClick={() => this.message_edit(record)} type="primary">编辑</Button>
+                        <Popconfirm  placement="topRight" title={`是否确认删除`} onConfirm={() => this.confirm(record.id)} okText="Yes" cancelText="No">
                             <Button style={{ marginLeft: 8 }}>删除</Button>
                         </Popconfirm>
                     </div>
@@ -112,7 +118,7 @@ class Main extends React.Component {
             <React.Fragment>
                 <div className="open_content">
                     <Title style={{ fontSize: "24px" }} title={`供应商管理`} />
-                    <Button className="open_btn" onClick={() => this.props.history.push("/home/supplier/create")} type="primary">添加赛程</Button>
+                    <Button className="open_btn" onClick={() => this.props.history.push("/home/supplier/create")} type="primary">添加</Button>
                 </div>
                 <Divider />
                 <Table
