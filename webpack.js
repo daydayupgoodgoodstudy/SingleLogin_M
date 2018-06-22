@@ -67,6 +67,11 @@ module.exports = {
           }
         },
         { loader: 'sass-loader', options: { sourceMap: true } }]
+      },
+      //icon图片
+      {
+        test:/\.(woff|svg|eot|ttf)\??.*$/,
+        loader:"url-loader?name=fonts/[name].[md5:hash:hex:5].[ext]",
       }
     ]
   },

@@ -1,5 +1,5 @@
 import React from "react"
-import { Layout, Menu, Icon, Divider } from 'antd';
+import { Layout, Menu, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
@@ -22,6 +22,9 @@ import { supplier_tabledata } from "@/contents/Supplier/action";
 import { Temp_tabledata } from "@/contents/Temp/action";
 
 import { Main as Change_pwd } from "@/contents/Changepwd";
+
+import "@/asset/font/icon.css";
+import Icon from "@/components/Icon.jsx";
 
 class Home extends React.Component {
     constructor(props) {
@@ -83,11 +86,11 @@ class Home extends React.Component {
                         onClick={this.handleClick}
                     >
                         <Menu.Item key="home_supplier">
-                            <Icon type="pie-chart" />
+                            <Icon type="icon-gongyingshangguanli" />
                             <span>供应商管理</span>
                         </Menu.Item>
                         <Menu.Item key="home_temp">
-                            <Icon type="desktop" />
+                            <Icon type="icon-navicon-dxmbgl" />
                             <span>短信模板</span>
                         </Menu.Item>
                     </Menu>
@@ -96,6 +99,7 @@ class Home extends React.Component {
                     <Header style={{ background: '#fff', padding: 0 }}>
                         <Icon
                             className="trigger"
+                            antd
                             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggle}
                         />

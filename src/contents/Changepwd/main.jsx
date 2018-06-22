@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import { Title } from "@/components/content-header";
 import { Change_pwd } from './action';
-
+import md5 from "md5";
 const FormItem = Form.Item;
 const Option = Select.Option;
+
 
 class Main extends React.Component {
     constructor(props) {
@@ -17,11 +18,11 @@ class Main extends React.Component {
         this.props.form.validateFields((err, values) => {
 
             let input = {
-                oldPwd: md5(values["oldPwd"]),
-                userName: md5(values["newPwd"]),
-                password: md5(values["confirmNewPwd"]),
+                password: md5(values["oldPwd"]),
+                newPassword: md5(values["newPwd"]),
+                // password: md5(values["confirmNewPwd"]),
             }
-            dispatch(change_pwd(input))
+            dispatch(Change_pwd(input))
         });
     }
     render() {

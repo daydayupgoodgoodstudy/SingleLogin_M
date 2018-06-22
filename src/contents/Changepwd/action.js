@@ -1,6 +1,7 @@
 import { message } from "antd";
 import history from "@/history";
 import config from "@/config.json";
+import Cookie from 'react-cookies';
 import qs from "qs";
 //修改密码
 export const Change_pwd = (body) => {
@@ -24,7 +25,7 @@ export const Change_pwd = (body) => {
             })
             .catch(err => {
                 dispatch({ type: "Changepwd/btn_loading_false" })
-                message.error("修改失败");
+                message.error( err.message||"修改失败");
             })
     }
 }
