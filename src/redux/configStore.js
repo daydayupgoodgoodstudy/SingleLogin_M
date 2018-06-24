@@ -17,6 +17,8 @@ import {Redux as Home} from "@/contents/Home";
 
 import {Redux as Changepwd} from "@/contents/Changepwd"; 
 
+import {Redux as Register} from "@/contents/Register"; 
+
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
@@ -28,7 +30,8 @@ const rootReducer = combineReducers({
     Temp,
     Temp_create,
     Temp_update,
-    Changepwd
+    Changepwd,
+    Register
 })
 
 
