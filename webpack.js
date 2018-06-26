@@ -11,23 +11,23 @@ module.exports = {
     publicPath: '/',
     chunkFilename: 'chunkRoute/[name].[chunkhash:8].chunk.js'
   },
-  devServer: {
-    // historyApiFallback: true,
-    // progress: false,
-    // contentBase: './app',
-    host: "localhost",
-    port: 8080,
-    proxy: {
-      '/api/*': {
-        //localhost:3000是接口地址
-        // target: "http://119.29.223.81:3000/",
-        // target:"http://172.17.3.170:48081/",
-        target:"http://172.17.3.170:8081/",
-        // target: 'http://localhost:3000/',
-        changeOrigin: true,
-      }
-    }
-  },
+  // devServer: {
+  //   // historyApiFallback: true,
+  //   // progress: false,
+  //   // contentBase: './app',
+  //   host: "localhost",
+  //   port: 8080,
+  //   proxy: {
+  //     '/api/*': {
+  //       //localhost:3000是接口地址
+  //       // target: "http://119.29.223.81:3000/",
+  //       // target:"http://172.17.3.170:48081/",
+  //       // target:"http://172.17.3.170:8081/",
+  //       // target: 'http://localhost:3000/',
+  //       changeOrigin: true,
+  //     }
+  //   }
+  // },
   module: {
     rules: [
       //jsx|js装载器
@@ -53,6 +53,7 @@ module.exports = {
         // }]
 
       },
+      //css Modules写法开启这个 start
       {
         test: /\.scss$/,
         include: /contents/,
@@ -79,31 +80,33 @@ module.exports = {
         { loader: 'sass-loader', options: { sourceMap: true } }
       ]
       },
-      //sass编译
-      {
-        test: /\.scss$/,
-        exclude: /content/,
-        use: [{
-          loader: 'style-loader',
-          options: {} // style-loader options
-        }, {
-          loader: 'css-loader',
-          options: {
-            // modules:true, //开启css Modules模式
-            importLoaders: 1 // css-loader options
-          }
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true,
-            config: {
-              path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
-            }
-          }
-        },
-        { loader: 'sass-loader', options: { sourceMap: true } }]
-      },
+      // css Modules end
+
+      //sass编译 写法开启这个
+      // {
+      //   test: /\.scss$/,
+      //   use: [{
+      //     loader: 'style-loader',
+      //     options: {} // style-loader options
+      //   }, {
+      //     loader: 'css-loader',
+      //     options: {
+      //       importLoaders: 1 // css-loader options
+      //     }
+      //   },
+      //   {
+      //     loader: 'postcss-loader',
+      //     options: {
+      //       sourceMap: true,
+      //       config: {
+      //         path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+      //       }
+      //     }
+      //   },
+      //   { loader: 'sass-loader', options: { sourceMap: true } }]
+      // },
+      // sass end
+    
       //icon图片
       {
         test:/\.(woff|svg|eot|ttf)\??.*$/,

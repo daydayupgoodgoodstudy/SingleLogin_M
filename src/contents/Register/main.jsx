@@ -4,9 +4,6 @@ import { NavBar, Icon, Modal, WingBlank, Toast, WhiteSpace, Checkbox, Flex, Butt
 import { createForm } from 'rc-form';
 
 import { connect } from 'react-redux';
-// import { Form, Icon, Checkbox, Input, Button } from 'antd';
-import Header_top from "@/components/Header-top";
-import Header_content from "@/components/Header-content";
 
 import { Route, Link } from "react-router-dom";
 
