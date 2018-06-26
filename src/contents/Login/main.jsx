@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { NavBar, Icon, WingBlank, WhiteSpace, Checkbox, Flex, Button, List, InputItem } from 'antd-mobile';
+import { createForm } from 'rc-form';
+
 import { connect } from 'react-redux';
-import { Form, Icon, Checkbox, Input, Button } from 'antd';
+// import { Form, Icon, Checkbox, Input, Button } from 'antd';
 import Header_top from "@/components/Header-top";
 import Header_content from "@/components/Header-content";
 
@@ -13,72 +17,121 @@ import { login, logout, register } from './action';
 
 import Cookie from 'react-cookies';
 
-const FormItem = Form.Item;
+import style from "./Login.scss";
 
-import '@/asset/css/login';
+// const FormItem = Form.Item;
+
+// import '@/asset/css/login';
+
+const CheckboxItem = Checkbox.CheckboxItem;
+const AgreeItem = Checkbox.AgreeItem;
 
 
-class Login extends React.Component {
+const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent);
+let moneyKeyboardWrapProps;
+if (isIPhone) {
+    moneyKeyboardWrapProps = {
+        onTouchStart: e => e.preventDefault(),
+    };
+}
+
+
+const PlaceHolder = ({ className = '', ...restProps }) => (
+    <div className={`${className} placeholder`} {...restProps}>Block</div>
+);
+
+class Main extends React.Component {
+    constructor(props){
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
         let { form, dispatch, history } = this.props;
         form.validateFields((err, values) => {
             if (!err) {
-                let output = {
-                    username: values.username,
-                    password: values.password
-                }
-                dispatch(login(output, history))
+                dispatch(login(values))
             }
         });
     }
     render() {
-        const { getFieldDecorator } = this.props.form;
+        const { getFieldProps } = this.props.form;
         return (
             <div className="Login">
-                <Header_top />
-                <Header_content>
-                    <div className="Login_content_img">
-                        <img src={require("@/asset/images/Page1Copy.png")} alt="" />
-                    </div>
-                    <div className="Login_content_input">
-                        <h1>账号登录</h1>
-                        <p>公共产所不建议自动登录,以防账号丢失</p>
-                        <Form onSubmit={this.handleSubmit} className="login-form">
-                            <FormItem>
-                                {getFieldDecorator('username', {
-                                    rules: [{ required: true, message: '手机号填写错误!' }],
-                                })(
-                                    <Input placeholder="手机号" />
-                                )}
-                            </FormItem>
-                            <FormItem>
-                                {getFieldDecorator('password', {
-                                    rules: [{ required: true, message: '密码错误!' }],
-                                })(
-                                    <Input type="password" placeholder="登录密码" />
-                                )}
-                            </FormItem>
-                            <FormItem>
-                                <Button type="primary" htmlType="submit" loading={this.props.login_n.login_loading} className="login-form-button">
-                                    Log in
-                                </Button>
-                            </FormItem>
-                            <FormItem>
-                                <Checkbox className="login-form-left">自动登录</Checkbox>
-                                <span className="login-form-right">忘记密码</span>
-                                <span className="login-form-right">立即注册</span>
-                            </FormItem>
-                        </Form>
-                    </div>
-                </Header_content>
+                <React.Fragment>
+                    <NavBar
+                        mode="light"
+                        icon={<Icon type="left" />}
+                        onLeftClick={() => console.log('onLeftClick')}
+                    >账号登录</NavBar>
+                    <WingBlank size="lg"><h1 style={{ marginTop: "18px", color: "#333333", fontSize: "22px", lineHeight: "30px" }}>账号登录</h1></WingBlank>
+                    <WingBlank size="lg"><p style={{ fontSize: "14px", color: "#666", lineHeight: "20px" }}>
+                        公共场所不建议自动登录，以防账号丢失</p>
+                    </WingBlank>
+                    <WingBlank size="lg">
+                        <List>
+                            <InputItem
+                                {...getFieldProps('userName')}
+                                placeholder="请输入手机号!"
+                                type="number"
+                                clear
+                            >手机号</InputItem>
+                        </List>
+                    </WingBlank>
+                    <WhiteSpace size='md' />
+                    <WingBlank size="lg">
+                        <List>
+                            <InputItem
+                                {...getFieldProps('password')}
+                                placeholder="请输入密码!"
+                                type="password"
+                                clear
+                            >密码</InputItem>
+                        </List>
+                    </WingBlank>
+                    <WhiteSpace size='md' />
+                    <WingBlank>
+                        <Button type="primary" onClick={this.handleSubmit} >登录</Button>
+                    </WingBlank>
+                    <WhiteSpace size='md' />
+                    <WingBlank>
+                        <Flex justify="between" className={style.ff} >
+                            <Flex.Item>
+                                <AgreeItem className={style.am_checkbox_agree} data-seed="logId" onChange={e => console.log('checkbox', e)}>
+                                    <span style={{
+                                        fontSize: "12px",
+                                        color: "#999",
+                                        lineHeight: "17px",
+                                    }}>自动登录</span>
+                                </AgreeItem>
+                            </Flex.Item>
+                            <div>
+                                <Link to="/changepwd">
+                                    <span style={{
+                                        marginRight: "10px",
+                                        fontSize: "12px",
+                                        color: "#999",
+                                        lineHeight: "14px",
+                                    }}>忘记密码</span>
+                                </Link>
+                                <Link to="/register">
+                                    <span style={{
+                                        fontSize: "12px",
+                                        color: "#999",
+                                        lineHeight: "14px",
+                                    }}>立即注册</span>
+                                </Link>
+                            </div>
+                        </Flex>
+                    </WingBlank>
+                </React.Fragment>
             </div>
         );
     }
 }
 
-Login = Form.create({})(Login);
+Main = createForm()(Main);
 
 function mapStateToProps(state) {
     return {
@@ -86,4 +139,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Main);

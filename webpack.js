@@ -21,7 +21,8 @@ module.exports = {
       '/api/*': {
         //localhost:3000是接口地址
         // target: "http://119.29.223.81:3000/",
-        target:"http://172.17.3.170:48081/",
+        // target:"http://172.17.3.170:48081/",
+        target:"http://172.17.3.170:8081/",
         // target: 'http://localhost:3000/',
         changeOrigin: true,
       }
@@ -42,19 +43,46 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
-        // loader: 'style-loader!css-loader'//添加对样式表的处理
-        use:['style-loader',{
-          loader:'css-loader',
-          options:{
-            modules:true
-          }
-        }]
+        // exclude: /node_modules/,
+        loader: 'style-loader!css-loader'//添加对样式表的处理
+        // use:['style-loader',{
+        //   loader:'css-loader',
+        //   options:{
+        //     modules:true
+        //   }
+        // }]
 
+      },
+      {
+        test: /\.scss$/,
+        include: /contents/,
+        // loader: 'style-loader!css-loader'//添加对样式表的处理
+        use:[{
+          loader: 'style-loader',
+          options: {} // style-loader options
+        }, {
+          loader: 'css-loader',
+          options: {
+            modules:true, //开启css Modules模式
+            importLoaders: 1 // css-loader options
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+            config: {
+              path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+            }
+          }
+        },
+        { loader: 'sass-loader', options: { sourceMap: true } }
+      ]
       },
       //sass编译
       {
         test: /\.scss$/,
+        exclude: /content/,
         use: [{
           loader: 'style-loader',
           options: {} // style-loader options

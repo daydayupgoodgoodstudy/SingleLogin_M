@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Header-content.scss";
+// import "./Header-content.scss";
 export const Header_content = (props) => {
     return (
         <React.Fragment>

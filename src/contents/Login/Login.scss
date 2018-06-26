@@ -1,0 +1,30 @@
+    .am_checkbox_agree{
+        margin-left: 0 !important;
+        padding:0 !important;
+        :global(.am-checkbox){
+            top: -1px;
+        }
+      
+        :global(.am-checkbox-inner){
+            top:7px;
+            border-radius:0%;
+            width: 14px;
+            height: 14px;
+            // &:after{
+            //     top:-0.5px;
+            //     right: 3.5px;
+            // }
+        }
+        :global(.am-checkbox-agree-label){
+            margin-left: 20px;
+        }
+    }
+
+    :global(.am-checkbox-inner){
+        &:after{
+            top:-1px;
+            right: 3.5px;
+            content: " ";
+            color:#108ee9;
+        }
+    }

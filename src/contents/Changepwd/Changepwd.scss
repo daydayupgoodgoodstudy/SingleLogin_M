@@ -1,0 +1,87 @@
+.am_checkbox_agree{
+    margin-left: 0 !important;
+    padding:0 !important;
+    :global(.am-checkbox){
+        top: -1px;
+    }
+  
+    :global(.am-checkbox-inner){
+        top:7px;
+        border-radius:0%;
+        width: 14px;
+        height: 14px;
+        // &:after{
+        //     top:-0.5px;
+        //     right: 3.5px;
+        // }
+    }
+    :global(.am-checkbox-agree-label){
+        margin-left: 20px;
+    }
+}
+
+:global(.am-checkbox-inner){
+    &:after{
+        top:-1px;
+        right: 3.5px;
+        content: " ";
+        color:#108ee9;
+    }
+}
+
+.register_code{
+    font-size: 14px;
+    letter-spacing: 0;
+    padding: 0 10px;
+    line-height: 40px;
+    height: 40px;
+    position:absolute!important;
+    border-radius: 0px;
+    right:0;
+    top:0;
+}
+
+:global(.am-list-item.am-input-item){
+    height: 40px;
+}
+:global(.am-list-item){
+    min-height: 40px;
+}
+
+
+:global(.am-list-item .am-input-label){
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+}
+
+:global(.am-list-item .am-input-control input){
+    font-size: 12px;
+    letter-spacing: 0;
+}
+
+
+:global(.am-modal-transparent){
+    width: auto;
+}
+
+.error_html{
+    height: 28px;
+    margin: 5px 0px;
+    padding: 0 0 0 20px;
+    background: #FCCCA7;
+    border: 1px solid rgb(252, 204, 167);
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 0px;
+    line-height: 28px
+}
+
+.i{
+    position: absolute;
+    left: 14px;
+    font-size: 26px;
+    color: #F04134;
+}
+
+

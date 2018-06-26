@@ -2,7 +2,7 @@ import React from "react"
 import { Layout, Menu, Icon, Divider } from 'antd';
 import { connect } from 'react-redux';
 import { Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
-import "../asset/css/home_layout";
+// import "../asset/css/home_layout";
 
 import Cookie from 'react-cookies';
 

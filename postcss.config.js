@@ -6,7 +6,7 @@ module.exports = {
       "postcss-write-svg": { utf8: false }, 
       "postcss-cssnext": {}, 
       "postcss-px-to-viewport": {
-        viewportWidth: 1920,
+        viewportWidth: 375,
         // (Number) The width of the viewport. 
         viewportHeight: 1334,
         // (Number) The height of the viewport. 
